@@ -40,6 +40,9 @@ build/Release
 
 # Dependency directories
 node_modules/
+FrontEnd/electron/node_modules/
+FrontEnd/frontend_tutorial/node_modules/
+*/__pycache__
 jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
