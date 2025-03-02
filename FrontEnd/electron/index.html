@@ -3,9 +3,60 @@
   <head>
     <meta charset="UTF-8">
     <style>
-      .container{
-                  display: flex;
-                }
+      .row {
+        width: 100%;
+        display: "flex";
+        justify-content: center;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+      }
+      .button-grid {
+        display: grid;
+        grid-template-columns: 50px 50px 50px;
+        grid-template-rows: 50px 50px 50px;
+      }
+      #upArrow, #tiltUpArrow {
+        display: flex;
+        justify-content: center;
+        align-content: flex-end;
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 50px solid gray;
+      }
+      #downArrow, #tiltDownArrow {
+        display: flex;
+        justify-content: center;
+        align-content: flex-start;
+        width: 0;
+        height: 0;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-top: 50px solid gray;
+      }
+      #leftArrow, #panLeftArrow {
+        display: flex;
+        justify-content: center;
+        align-content: flex-start;
+        width: 0;
+        height: 0;
+        border-top: 25px solid transparent;
+        border-right: 50px solid gray;
+        border-bottom: 25px solid transparent;
+      }
+      #rightArrow, #panRightArrow {
+        display: flex;
+        justify-content: center;
+        align-content: flex-start;
+        width: 0;
+        height: 0;
+        border-top: 25px solid transparent;
+        border-left: 50px solid gray;
+        border-bottom: 25px solid transparent;
+      }
     </style>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -14,35 +65,69 @@
   </head>
 
   <body>
-    <div class="container">
-  
-      <div class="jumbotron">
-      <h2>CS498: IoT -- Lab 2</h2>
-
-      <!-- <video class="center" width="600" height="400" controls>
-        <source src="samplevid.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-      </video> -->
-      <img src="./media/default_background.png" id='pics'>
-    </div> 
-  
+    <div class="row">
+      <div class="container">
+        <div class="jumbotron">
+          <h2>CS498: IoT -- Lab 2</h2>
+          <!-- <video class="center" width="600" height="400" controls>
+            <source src="http://10.0.0.207:9000/mjpg'" type="video/mjpg">
+              Your browser does not support the video tag.
+          </video> -->
+          <iframe src="http://10.0.0.207:9000/mjpg" height="490px" width="650px" title="W3Schools Free Online Web Tutorials"></iframe>
+          <!-- <img src="./media/default_background.png" id='pics'> -->
+        </div> 
+      </div>
   </div>
 
   <div class="row">
     <div class="container">
-        <div class="jumbotron text-center col-md-6">
-            <span>&nbsp;&nbsp;</span> 
-            <span id="upArrow" style='font-size:50px; color:grey;'>&#8679;</span>
-            <br>
-            <span id="leftArrow" style='font-size:45px; color:grey;'>&#8678;</span>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> 
-            <span id="rightArrow" style='font-size:45px; color:grey;'>&#8680;</span>
-            <br>
-            <span>&nbsp;&nbsp;</span> 
-            <span id="downArrow" style='font-size:50px; color:grey;'>&#8681;</span>
+        <div class="jumbotron text-center col-sm-12 col-md-6">
+          <h2>Direction Controls</h2>
+          <div class="button-grid">
+            <div></div> 
+            <div id="upArrow">
+              <div style='font-size:20px; color: white; margin-top: 15px;'>w</div>
+            </div>
+            <div></div>
+            <div id="leftArrow" >
+              <div style='font-size:20px; color: white; margin-left: 65px; margin-top: -15px;'>a</div>
+            </div>
+            <div></div> 
+            <div id="rightArrow" >
+              <div style='font-size:20px; color: white; margin-right: 65px; margin-top: -15px;'>d</div>
+            </div>
+            <div></div> 
+            <div id="downArrow" >
+              <div style='font-size:20px; color: white; margin-top: -50px;'>s</div>
+            </div>
+            <div></div>
+          </div>
         </div>
 
-        <div class="jumbotron text-left col-md-6">
+        <div class="jumbotron text-center col-sm-12 col-md-6">
+          <h2>Tilt/Pan Controls</h2>
+          <div class="button-grid">
+            <div></div> 
+            <div id="tiltUpArrow">
+              <div style='font-size:20px; color: white; margin-top: 15px;'>i</div>
+            </div>
+            <div></div>
+            <div id="panLeftArrow" >
+              <div style='font-size:20px; color: white; margin-left: 65px; margin-top: -15px;'>j</div>
+            </div>
+            <div></div> 
+            <div id="panRightArrow" >
+              <div style='font-size:20px; color: white; margin-right: 65px; margin-top: -15px;'>l</div>
+            </div>
+            <div></div> 
+            <div id="tiltDownArrow" >
+              <div style='font-size:20px; color: white; margin-top: -50px;'>k</div>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <div class="jumbotron text-left col-sm-12 col-md-6">
         <input id="message" type="text" placeholder="message to Pi"/>
         <button class="btn btn-success" onclick="update_data()">Submit</button>
           <p>
